@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
     }
   };
   const handleOnUpdateDetail = (str, detail) => {
-    console.log("id", str, "detail", detail);
     setDetails({ ...details, [str]: detail });
   };
 
@@ -37,7 +36,6 @@ function MyApp({ Component, pageProps }) {
     [items, details]
   );
 
-  console.log("details", details);
   return (
     <AppContext.Provider value={value}>
       <Component {...pageProps} />
