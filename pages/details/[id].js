@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { AppContext } from "app/context";
+import Button from "app/components/Button";
 import styles from "styles/Home.module.css";
 
 const DetailInput = styled.textarea`
@@ -25,23 +26,6 @@ const StyledSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-const SaveButton = styled.button`
-  width: 60px;
-  height: 25px;
-  padding: 5px 10px;
-  border-radius: 15px;
-  background-color: #136833;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  ${({ disabled }) =>
-    disabled &&
-    `
-    background-color: #eee;
-    color: #222;
-    cursor: not-allowed;
-  `}
 `;
 
 const Details = () => {
@@ -65,13 +49,13 @@ const Details = () => {
         <h2>{id}</h2>
         <StyledSection>
           <p>Note</p>
-          <SaveButton
+          <Button
             onClick={handleOnSave}
             disabled={note === details[id]}
             type="button"
           >
             {note === details[id] ? "Saved" : "Save"}
-          </SaveButton>
+          </Button>
         </StyledSection>
         <DetailInput value={note} onChange={(e) => setNote(e.target.value)} />
       </main>

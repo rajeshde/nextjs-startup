@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { AppContext } from "app/context";
 import TodoInput from "./TodoInput";
+import Button from "./Button";
 
 const StyledUl = styled.ul`
   list-style-type: none;
@@ -21,8 +22,11 @@ const StyledLi = styled.li`
 `;
 
 const DeleteButton = styled.button`
-  width: 50px;
-  height: 30px;
+  width: 60px;
+  height: 25px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: #222;
   align-self: center;
   float: right;
   border-radius: 5px;
@@ -42,12 +46,13 @@ const TodoList = () => {
           ? items.map((item) => (
               <StyledLi key={item}>
                 <Link href={`/details/${item}`}>{item}</Link>
-                <DeleteButton
+                <Button
+                  danger
                   onClick={() => handleOnDeleteItem(item)}
                   type="button"
                 >
                   Delete
-                </DeleteButton>
+                </Button>
               </StyledLi>
             ))
           : "No items yet :("}
