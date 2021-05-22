@@ -7,8 +7,14 @@ function MyApp({ Component, pageProps }) {
   const [items, setItems] = useState([]);
   const [details, setDetails] = useState({});
 
+  const deleteDetail = (str) => {
+    const tmpDetailsObj = { ...details };
+    delete tmpDetailsObj[str];
+    setDetails(tmpDetailsObj);
+  };
   const handleOnDeleteItem = (str) => {
     setItems(items.filter((item) => item !== str));
+    deleteDetail(str);
   };
   const handleOnAddItem = (str) => {
     if (!items.includes(str)) {
@@ -31,6 +37,7 @@ function MyApp({ Component, pageProps }) {
     [items, details]
   );
 
+  console.log("details", details);
   return (
     <AppContext.Provider value={value}>
       <Component {...pageProps} />
